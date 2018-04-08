@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<view class="container">
+    <view>
+        <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+                autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+            <block wx:for-items="{{images}}">
+                <swiper-item>
+                    <image src="{{item}}" class="slide-image"/>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <block wx:for-items="{{items}}">
+        <view class="text">
+            <view class="line_flag"></view>
+            <text>{{item.name}}</text>
+        </view>
+        <block wx:for-items="{{item.child}}">
+          <view class="flex item">
+              <view class="item_left">
+                  <image src="{{item.name}}"/>
+              </view>
+              <view class="flex_auto item_middle">
+                  <view><text class="title">{{item.name}}</text></view>
+                  <view><text class="sub_title">{{item.description}}</text></view>
+                  <view><text class="actor">Android / IOS</text></view>
+              </view>
+              <view class="item_right">
+                  <view><text class="score">初级</text></view>
+                  <view><text class="action">答题</text></view>
+              </view>
+          </view>
+      </block>    
+    </block>
+</view>
