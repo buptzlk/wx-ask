@@ -8,6 +8,10 @@
     justify-content: space-between;
     box-sizing: border-box;
 }
+.jrm-flex-column{
+  display: flex;
+  flex-direction:column;  
+}
 
 page {
     background-color: #F2f2f2;

@@ -1,10 +1,22 @@
 .container {
     background-color: #F2f2f2;
 }
-
+.title_content {
+    display: flex;
+    background-color: #fff;
+}
+.userinfo-item {
+  flex: 1;
+  padding-left: 32rpx;
+  height: 128rpx;
+  text-align: left;
+  border-left: 1px solid #eee;
+  margin-top:20rpx; 
+}
 .swiper_box {
-    width: 100%;
-    height: 100px;
+    width: 20%;
+    height: 20px;
+    margin-top: 50%;
 }
 
 swiper-item image {
@@ -99,3 +111,29 @@ view.text text {
     line-height: 16px;
     text-align: center;
 }
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.userinfo-title{   
+   font-size: 37rpx;
+   color: #333333;
+   margin-top: 15rpx;  
+   line-height: 38rpx;
+ }
+
+  .userinfo-desp{
+   margin-top: 12rpx;   
+   font-size: 24rpx;
+   color: #999;
+   line-height: 38rpx;
+ }

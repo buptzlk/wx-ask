@@ -34,6 +34,7 @@ App({
                 success: function (res) {
                   wx.setStorageSync('openId', res.data.openId);
                   wx.setStorageSync('score', res.data.score);
+                  wx.setStorageSync('grade', res.data.grade);
                   console.log(res)
                 }
               })

@@ -1,14 +1,17 @@
 <!--index.wxml-->
 <view class="container">
-    <view>
-        <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
-                autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
-            <block wx:for-items="{{images}}">
-                <swiper-item>
-                    <image src="{{item}}" class="slide-image"/>
-                </swiper-item>
-            </block>
-        </swiper>
+    <view class='title_content'>
+        <view  bindtap="bindViewTap" class="userinfo">
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        </view>
+        <view class='jrm-flex-column userinfo-item'>
+         <text class='userinfo-desp'>积分</text>
+         <text class="userinfo-title">{{score}}分</text>
+        </view>
+        <view class='jrm-flex-column userinfo-item'>
+           <text class="userinfo-desp">排名</text>
+           <text class="userinfo-title">{{grade}}</text>
+        </view>
     </view>
 
     <block wx:for-items="{{items}}">

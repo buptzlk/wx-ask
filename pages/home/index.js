@@ -28,7 +28,9 @@ Page( {
     app.getUserInfo( function( userInfo ) {
       //更新数据
       that.setData( {
-        userInfo: userInfo
+        userInfo: userInfo,
+        score:wx.getStorageSync('score'),
+        grade:wx.getStorageSync('grade')
       })
     })
 
