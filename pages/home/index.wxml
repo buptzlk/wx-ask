@@ -22,7 +22,7 @@
         <block wx:for-items="{{item.child}}">
           <view class="flex item">
               <view class="item_left">
-                  <image src="{{item.name}}"/>
+                  <image src="{{item.avatar}}"/>
               </view>
               <view class="flex_auto item_middle">
                   <view><text class="title">{{item.name}}</text></view>
