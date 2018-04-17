@@ -3,7 +3,8 @@
     "pages/home/index",
     "pages/cinema/index",
     "pages/my/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/answer/answer"
   ],
   "window":{
     "backgroundTextStyle":"white",

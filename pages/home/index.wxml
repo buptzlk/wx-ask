@@ -20,7 +20,7 @@
             <text>{{item.name}}</text>
         </view>
         <block wx:for-items="{{item.child}}">
-          <view class="flex item">
+          <view class="flex item" id="{{item.index}}">
               <view class="item_left">
                   <image src="{{item.avatar}}"/>
               </view>
@@ -31,7 +31,7 @@
               </view>
               <view class="item_right">
                   <view><text class="score">初级</text></view>
-                  <view><text class="action">答题</text></view>
+                  <view><text bindtap= "anwser" class="action">答题</text></view>
               </view>
           </view>
       </block>    

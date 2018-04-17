@@ -16,6 +16,26 @@ Page( {
       url: '../logs/logs'
     })
   },
+  anwser: function(){
+    wx.request({
+      url: 'https://www.knowalker.com/q/show/1',
+      method: 'GET',
+      data: {},
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function (res) {
+        // wx.setStorage({
+        //   key: 'question',
+        //   data: res.data.data,
+        // })
+        wx.setStorageSync('question', res.data.data)
+      }
+    })
+    wx.navigateTo({
+      url: '../answer/answer'
+    })
+  },
   swiperchange: function(e) {
     //FIXME: 当前页码
     //console.log(e.detail.current)

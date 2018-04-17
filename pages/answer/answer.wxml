@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view >
+ <text>答题答题</text>
+  <block wx:for-items="{{items}}">
+   <text>{{item.title}}</text>
+  </block>
+
+</view>
