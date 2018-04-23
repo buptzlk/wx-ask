@@ -4,7 +4,8 @@
     "pages/cinema/index",
     "pages/my/index",
     "pages/logs/logs",
-    "pages/answer/answer"
+    "pages/answer/answer",
+    "pages/score/score"
   ],
   "window":{
     "backgroundTextStyle":"white",
@@ -29,11 +30,6 @@
       "iconPath": "image/icon_normal.png",
       "selectedIconPath": "image/icon_pressed.png",
       "text": "排名"
-    }, {
-      "pagePath": "pages/my/index",
-      "iconPath": "image/icon_normal.png",
-      "selectedIconPath": "image/icon_pressed.png",
-      "text": "我的"
     }]
   },
   "debug": true
