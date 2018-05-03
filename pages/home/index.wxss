@@ -69,7 +69,7 @@ view.text text {
 .item image {
     display: block;
     width: 65px;
-    height: 95px;
+    height: 85px;
 }
 
 .item_middle {

@@ -1,45 +1,66 @@
-.container {
-  background-color: #F2f2f2;
+
+/* 导航对应内容项 */
+.nav_section{
+    width:100%;
+}
+.nav_section_items{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:30rpx;
+    border-bottom:2rpx solid #ddd;
+    position: relative;
+}
+.nav_section_items:active{
+    background:#ddd;
+}
+.nav_section_items .section_image{
+    width:150rpx;
+    height:158rpx;
+    border-radius: 50%;
+}
+.nav_section_items .section_image image{
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+}
+.nav_section_items .section_cont{
+    width:400rpx;
+    font-size:26rpx;
+    color:#a9a9a9;
+    
+}
+.nav_section_items .section_cont view{
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    display: block;
+}
+.nav_section_items .section_cont .section_cont_intro{
+    white-space:normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.nav_section_items .section_cont .section_cont_sub{
+    font-size: 30rpx;
+    line-height:60rpx;
+    color:#000;
+    margin-bottom:10rpx;
+}
+.nav_section_items .section_cont .section_cont_price{
+    font-size:32rpx;
+    color:#d24a58;
+}
+.nav_section_items .section_book{
+    width:80rpx;
+    height:80rpx;
+    font-size:26rpx;
+    border-radius:100%;
+    background:#29cc6d;
+    line-height: 80rpx;
+    color:#fff;
+    text-align: center;
+    margin-top:35rpx;
 }
 
-.item {
-  padding: 10px;
-  background-color: #fff;
-  color: #787878;
-  border-top: 1px solid #eaeaea;
-  border-bottom: 1px solid #eaeaea;
-}
-
-.item_left {
-  flex: 1;
-  margin-left: 10px;
-  padding-top: 5px;
-  overflow: hidden;
-}
-
-.item_left .title {
-  font-size: 16px;
-  color: #333;
-}
-.item_left .sub_title {
-  font-size: 14px;
-  color: #666;
-  margin: 2px 0px;
-}
-
-.item_right .tag {
-  margin-top: 30px;
-  border: 1px solid #29cc6d;
-  border-radius: 2px;
-  color: #29cc6d;
-  display: inline-block;
-  padding: 2px 4px;
-  font-size: 12px;
-  line-height: 16px;
-  text-align: center;
-}
-
-.item_right .price {
-  font-size: 12px;
-  color: #cf616a;
-}
