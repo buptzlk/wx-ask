@@ -6,7 +6,7 @@
   </view>
   <text class='tip'>您本次得分:</text>
   <view class="info">
-    <text class='infotext'>32</text>
+    <text class='infotext'>{{grade}}</text>
     <text class='infotext1'>分</text>
   </view>
 </view>

@@ -73,6 +73,7 @@ view.text text {
 }
 
 .item_middle {
+    display:block;
     flex: 1;
     margin-left: 10px;
     padding-top: 5px;
@@ -80,19 +81,22 @@ view.text text {
 }
 
 .item_middle .title {
+    display:block;
     font-size: 16px;
     color: #333;
+    margin-bottom: 30rpx;
 }
 .item_middle .sub_title {
+    display:block;
     font-size: 14px;
     color: #666;
-    margin: 2px 0px;
+    margin: 10rpx 0rpx;
 }
 
 .item_middle .actor {
     font-size: 14px;
     color: #666;
-    margin: 2px 0px;
+    margin: 10px 0px;
 }
 
 .item_right .score {

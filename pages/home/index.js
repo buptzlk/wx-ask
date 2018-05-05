@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-var app = getApp()
+var app = getApp();
 Page( {
   data: {
     indicatorDots: true,
@@ -16,20 +16,20 @@ Page( {
       url: '../logs/logs'
     })
   },
-  anwser: function(){
+  anwser: function (event){
+    var value = event.currentTarget.dataset.value;
+    console.log('valse :' + value);
     wx.request({
-      url: 'https://www.knowalker.com/q/show/1',
+      url: 'https://www.knowalker.com/q/show/' + value,
       method: 'GET',
-      data: {},
+      data: {
+      },
       header: {
         'Accept': 'application/json'
       },
       success: function (res) {
-        // wx.setStorage({
-        //   key: 'question',
-        //   data: res.data.data,
-        // })
-        wx.setStorageSync('question', res.data.data)
+        wx.setStorageSync('question', res.data.data);
+        wx.setStorageSync('count', res.data.count)
       }
     })
     wx.navigateTo({
@@ -51,7 +51,7 @@ Page( {
     //     userInfo: userInfo,
     //   })
     // })
-    
+
     //调用登录接口
     wx.login({
       success: function (res) {
@@ -92,44 +92,11 @@ Page( {
         'Accept': 'application/json'
       },
       success: function(res) {
-        that.setData({items:res.data.data})
+        that.setData({
+          items:res.data.data
+          })
       }
     })
-
-    //bannerList
-    wx.request({
-      url: 'https://www.knowalker.com/api/cat',
-      method: 'GET',
-      data: {},
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        that.data.images = res.data
-      }
-    })
-
-    //缓存bug
-    // wx.request({
-    //   url: 'https://www.knowalker.com/user/get',
-    //   method: 'GET',
-    //   data: {
-    //     openId : wx.getStorageSync('openId')
-    //   },
-    //   header: {
-    //     'Accept': 'application/json'
-    //   },
-    //   success: function (res) {
-    //     console.log("res")
-    //     console.log(res.data.data[0])
-    //     var obj = res.data.data[0]
-    //     that.setData({
-    //       score: obj.score ,
-    //       grade: obj.grade 
-    //     })
-    //   }
-    // })
-    
   },
   globalData: {
     userInfo: null

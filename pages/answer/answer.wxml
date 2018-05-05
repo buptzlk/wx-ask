@@ -2,9 +2,9 @@
 <view class='container'>
  <text class= 'question'>{{num}}. {{title}}</text>
   <view class='answer' >
-    <button bindtap="answerNext" class='answerNext' type="button">{{A}}</button>
-    <button bindtap="answerNext" class='answerNext' type="button">{{B}}</button>
-    <button bindtap="answerNext" class='answerNext' type="button">{{C}}</button>
-    <button bindtap="answerNext" class='answerNext' type="button">{{D}}</button>
+    <button bindtap="answerNext" data-value="A" class='answerNext' type="button">{{A}}</button>
+    <button bindtap="answerNext" data-value="B" class='answerNext' type="button">{{B}}</button>
+    <button bindtap="answerNext" data-value="C" class='answerNext' type="button">{{C}}</button>
+    <button bindtap="answerNext" data-value="D" class='answerNext' type="button">{{D}}</button>
   </view>
 </view>
