@@ -49,8 +49,10 @@
     margin-bottom:10rpx;
 }
 .nav_section_items .section_cont .section_cont_price{
-    font-size:32rpx;
-    color:#d24a58;
+    margin-top: 24rpx;   
+    font-size: 38rpx;
+    color: #999;
+    line-height: 38rpx;
 }
 .nav_section_items .section_book{
     width:80rpx;

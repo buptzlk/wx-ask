@@ -2,7 +2,7 @@
 <view class="container">
     <view class='title_content'>
         <view  bindtap="bindViewTap" class="userinfo">
-            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+            <image class="userinfo-avatar" src="{{avatar}}" background-size="cover"></image>
         </view>
         <view class='jrm-flex-column userinfo-item'>
          <text class='userinfo-desp'>积分</text>

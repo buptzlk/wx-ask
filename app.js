@@ -15,7 +15,6 @@ App({
       //调用登录接口
       wx.login({
         success: function (res) {
-          console.log(res.code)
           wx.getUserInfo({
             success: function (res_user) {
               that.globalData.userInfo = res_user.userInfo
@@ -35,7 +34,6 @@ App({
                   wx.setStorageSync('openId', res.data.openId);
                   wx.setStorageSync('score', res.data.score);
                   wx.setStorageSync('grade', res.data.grade);
-                  console.log(res)
                 }
               })
             }

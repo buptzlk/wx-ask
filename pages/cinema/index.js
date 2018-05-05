@@ -16,15 +16,16 @@ Page({
 
         //playingList
         wx.request({
-            url: 'http://json.bmbstack.com/cinemaList',
+           url: 'https://www.knowalker.com/user/scorelist',
             method: 'GET',
             data: {},
             header: {
                 'Accept': 'application/json'
             },
             success: function(res) {
+              // var obj = res.data.data[0]
                 console.log(res.data)
-                that.data.items = res.data
+                that.setData({ items: res.data.data })
             }
         })
     },
