@@ -33,9 +33,12 @@ Page({
         wx.setStorageSync('count', res.data.count)
       }
     })
-    wx.navigateTo({
-      url: '../answer/answer?grade=0'
-    })
+    setTimeout(function () { 
+      wx.navigateTo({
+        url: '../answer/answer?grade=0'
+      })
+    }.bind(this), 100);
+    
   },
   swiperchange: function(e) {
     //FIXME: 当前页码
