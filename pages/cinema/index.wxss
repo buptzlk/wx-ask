@@ -15,8 +15,8 @@
     background:#ddd;
 }
 .nav_section_items .section_image{
-    width:150rpx;
-    height:158rpx;
+    width:145rpx;
+    height:150rpx;
     border-radius: 50%;
 }
 .nav_section_items .section_image image{

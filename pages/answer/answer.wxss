@@ -28,3 +28,24 @@ page {
   margin: 40rpx 40rpx;
   position: relative;
 }
+.answerNext-error {
+  justify-content: space-between;
+  color: #cf616a;
+  background: #fff;
+  border-radius: 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin: 40rpx 40rpx;
+  position: relative;
+}
+
+.answerNext-right {
+  justify-content: space-between;
+  color: #29cc6d;
+  background: #fff;
+  border-radius: 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin: 40rpx 40rpx;
+  position: relative;
+}

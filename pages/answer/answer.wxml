@@ -2,9 +2,36 @@
 <view class='container'>
  <text class= 'question'>{{num}}. {{title}}</text>
   <view class='answer' >
-    <button bindtap="answerNext" data-value="A" class='answerNext' type="button">{{A}}</button>
-    <button bindtap="answerNext" data-value="B" class='answerNext' type="button">{{B}}</button>
-    <button bindtap="answerNext" data-value="C" class='answerNext' type="button">{{C}}</button>
-    <button bindtap="answerNext" data-value="D" class='answerNext' type="button">{{D}}</button>
+    <view wx:if="{{'A' == chosen}}"> 
+      <button bindtap="answerNext" data-value="A" class="{{isAnswerRight?'answerNext-right':'answerNext-error'}}" type="button">{{A}}</button>
+    </view>
+    <view wx:else> 
+      <button bindtap="answerNext" data-value="A" class="answerNext" 
+      type="button">{{A}}</button>
+    </view>
+
+    <view wx:if="{{'B' == chosen}}"> 
+      <button bindtap="answerNext" data-value="B" class="{{isAnswerRight?'answerNext-right':'answerNext-error'}}" type="button">{{B}}</button>
+    </view>
+    <view wx:else> 
+      <button bindtap="answerNext" data-value="B" class="answerNext" 
+      type="button">{{B}}</button>
+    </view>
+
+    <view wx:if="{{'C' == chosen}}"> 
+      <button bindtap="answerNext" data-value="C" class="{{isAnswerRight?'answerNext-right':'answerNext-error'}}" type="button">{{C}}</button>
+    </view>
+    <view wx:else> 
+      <button bindtap="answerNext" data-value="C" class="answerNext" 
+      type="button">{{C}}</button>
+    </view>
+
+    <view wx:if="{{'D' == chosen}}"> 
+      <button bindtap="answerNext" data-value="D" class="{{isAnswerRight?'answerNext-right':'answerNext-error'}}" type="button">{{D}}</button>
+    </view>
+    <view wx:else> 
+      <button bindtap="answerNext" data-value="D" class="answerNext" 
+      type="button">{{D}}</button>
+    </view>
   </view>
 </view>

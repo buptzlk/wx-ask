@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 var app = getApp();
-Page( {
+Page({
   data: {
     indicatorDots: true,
     vertical: false,
@@ -28,12 +28,13 @@ Page( {
         'Accept': 'application/json'
       },
       success: function (res) {
+        wx.removeStorageSync('question');
         wx.setStorageSync('question', res.data.data);
         wx.setStorageSync('count', res.data.count)
       }
     })
     wx.navigateTo({
-      url: '../answer/answer'
+      url: '../answer/answer?grade=0'
     })
   },
   swiperchange: function(e) {
@@ -98,15 +99,56 @@ Page( {
       }
     })
   },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onShow: function () {
+    console.log('onShow');
+    var that = this
+    wx.login({
+      success: function (res) {
+        wx.getUserInfo({
+          success: function (res_user) {
+            that.globalData.userInfo = res_user.userInfo
+            typeof cb == "function" && cb(that.globalData.userInfo)
+            wx.request({
+              url: 'https://www.knowalker.com/user/get',
+              data: {
+                code: res.code,
+                encryptedData: res_user.encryptedData,
+                iv: res_user.iv
+              },
+              method: 'GET',
+              header: {
+                'content-type': 'application/json'
+              },
+              success: function (res) {
+                console.log('res')
+                console.log(res)
+                var obj = res.data.data[0];
+                that.setData({
+                  score: obj.score,
+                  grade: obj.grade,
+                  avatar: obj.avatar
+                });
+              }
+            })
+          }
+        })
+      }
+    })  
+  },
+
   globalData: {
     userInfo: null
   },
 
   
-  go: function(event) {
-    wx.navigateTo({
-      url: '../list/index?type=' + event.currentTarget.dataset.type
-    })
-  }
+  // go: function(event) {
+  //   wx.navigateTo({
+  //     url: '../list/index?type=' + event.currentTarget.dataset.type
+  //   })
+  // }
 
 })

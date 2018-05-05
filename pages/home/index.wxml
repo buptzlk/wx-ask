@@ -27,10 +27,9 @@
               <view class="item_middle">
                   <view><text class="title">{{item.name}}</text></view>
                   <view><text class="sub_title">{{item.description}}</text></view>
-                  <view><text class="actor">Android / IOS</text></view>
               </view>
               <view class="item_right">
-                  <view><text class="score">初级</text></view>
+                  <view><text class="score">{{item.grade}}</text></view>
                   <view><text bindtap= "anwser" data-value="{{item.id}}" class="action">答题</text></view>
               </view>
           </view>

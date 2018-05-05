@@ -29,6 +29,23 @@ Page({
             }
         })
     },
+    onShow:function() {
+      var that = this
+      wx.request({
+        url: 'https://www.knowalker.com/user/scorelist',
+        method: 'GET',
+        data: {},
+        header: {
+          'Accept': 'application/json'
+        },
+        success: function (res) {
+          // var obj = res.data.data[0]
+          console.log('res.data')
+          console.log(res.data)
+          that.setData({ items: res.data.data })
+        }
+      })
+    },
     onReady: function () {
         wx.setNavigationBarTitle({
             title: '专家你来'
