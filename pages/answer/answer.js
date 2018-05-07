@@ -1,4 +1,6 @@
 // pages/answer/answer.js
+// 题目
+var items = new Array();
 var index = 0;
 // 总条目
 var count = 0;
@@ -12,6 +14,10 @@ var score = 0;
 var arr = {};
 //题目id
 var questionId;
+// 是否需要清空
+var isclear = true;
+var catId ;
+var lastCatId;
 Page({
 
   /**
@@ -32,29 +38,86 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (option) {
+    var that = this;
+    var length = 0;
     grade = option.grade;
-    count = wx.getStorageSync('count');
-    if (wx.getStorageSync('index') > 0) {
-      index = wx.getStorageSync('index');
-    } 
-    if (index > count || index == count) {
-      index = 0;
+    catId = option.catId;
+    //先判断有无数据 没有肯定是第一次进来 有的话再判断是否同一个题目类别下的题目列表
+    if (items == null) {
+      length = 0;
+    } else {
+      // 两次catId一样就是在刷新同一页面 否则就是其他类别题目进来的 所以重置
+      if (lastCatId == catId) {
+        length = items.length;
+      } else {
+        length = 0;
+        wx.removeStorageSync('index');
+        index = 0;
+      }
+     
     }
-    var items = wx.getStorageSync('question')
-    var options = items[index].options
-    var obj = JSON.parse(options)
-    result = JSON.parse(items[index].result)[0]
-    score = items[index].score
-    questionId = items[index].id
-    this.setData({
-      title: items[index].title,
-      A: obj.A,
-      B: obj.B,
-      C: obj.C,
-      D: obj.D,
-      num:index+1
-    });   
+  
+    if (length == null || length <= 0) {
+      lastCatId = catId;
+      wx.request({
+        url: 'https://www.knowalker.com/q/show/' + catId,
+        method: 'GET',
+        data: {
+        },
+        header: {
+          'Accept': 'application/json'
+        },
+        success: function (res) {
+          items = res.data.data
+          console.log(items)
+          count = res.data.count;
+          if (wx.getStorageSync('index') > 0) {
+            index = wx.getStorageSync('index');
+          }
+          if (index > count || index == count) {
+            index = 0;
+          }
+          var options = items[index].options;
+          var obj = JSON.parse(options);
+          result = JSON.parse(items[index].result)[0];
+          score = items[index].score;
+          questionId = items[index].id;
+          that.setData({
+            title: items[index].title,
+            A: obj.A,
+            B: obj.B,
+            C: obj.C,
+            D: obj.D,
+            num: index + 1
+          });
+        }
+      })
+    } else {
+      if (wx.getStorageSync('index') > 0) {
+        index = wx.getStorageSync('index');
+      }
+      if (index > count || index == count) {
+        index = 0;
+      }
+      console.log('else index');
+      console.log(index);
+      var options = items[index].options;
+      var obj = JSON.parse(options);
+      result = JSON.parse(items[index].result)[0];
+      score = items[index].score;
+      questionId = items[index].id;
+      that.setData({
+        title: items[index].title,
+        A: obj.A,
+        B: obj.B,
+        C: obj.C,
+        D: obj.D,
+        num: index + 1
+      });
+    }
   },
+
+  // 点击选项
   answerNext: function (event) {
     var that = this;
     var value = event.currentTarget.dataset.value;
@@ -64,6 +127,7 @@ Page({
     console.log('index dianji hou :'+index);
     arr[questionId] = value;
     if (index + 1 < count) {
+      isclear = false;
       if (value == result) {
         grade = parseInt(grade) + parseInt(score);
         console.log('grade')
@@ -80,12 +144,14 @@ Page({
       wx.setStorageSync('index', index + 1);
       setTimeout(function () {
         wx.redirectTo({
-          url: '../answer/answer?grade=' + grade
+          url: '../answer/answer?grade=' + grade + '&catId=' + catId
         })
       }.bind(this), 500);
       
     } else {
+      isclear = true;
       index = 0;
+      items.splice(0, items.length);
       wx.removeStorageSync('index');
       if (value == result) {
         console.log('grade')
@@ -102,22 +168,6 @@ Page({
         })  
       }
       //答题完毕上传分数 和题目答案
-    //   wx.request({
-    //     url: 'https://www.knowalker.com/user/addScore',
-    //     method: 'GET',
-    //     data: {
-    //       score : grade,
-    //       openId : wx.getStorageSync('openId'),
-    //       question: JSON.stringify(arr)
-    //     },
-    //     header: {
-    //       'Accept': 'application/json'
-    //     },
-    //     success: function (res) {
-    //       console.log('shan')
-    //       console.log(res)
-    //     }
-    //  })
       //调用登录接口
       wx.login({
         success: function (res) {
@@ -173,15 +223,19 @@ Page({
    */
   onHide: function () {
     console.log("hide");
-    wx.removeStorageSync('question');
-    wx.removeStorageSync('index');
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    console.log("onUnload");
+    if (isclear) {
+      wx.removeStorageSync('index');
+      items.splice(0, items.length);
+      items = null;
+    }
+    
   },
 
   /**

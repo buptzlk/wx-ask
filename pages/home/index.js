@@ -16,30 +16,16 @@ Page({
       url: '../logs/logs'
     })
   },
+  //  前往答题页面
   anwser: function (event){
-    var value = event.currentTarget.dataset.value;
-    console.log('valse :' + value);
-    wx.request({
-      url: 'https://www.knowalker.com/q/show/' + value,
-      method: 'GET',
-      data: {
-      },
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function (res) {
-        wx.removeStorageSync('question');
-        wx.setStorageSync('question', res.data.data);
-        wx.setStorageSync('count', res.data.count)
-      }
-    })
+    var value = event.currentTarget.dataset.value;   
     setTimeout(function () { 
       wx.navigateTo({
-        url: '../answer/answer?grade=0'
+        url: '../answer/answer?grade=0&catId=' + value
       })
     }.bind(this), 100);
-    
   },
+
   swiperchange: function(e) {
     //FIXME: 当前页码
     //console.log(e.detail.current)
@@ -141,6 +127,23 @@ Page({
         })
       }
     })  
+
+    //playingList
+    wx.request({
+      url: 'https://www.knowalker.com/api/cat',
+      method: 'GET',
+      data: {},
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function (res) {
+        console.log('res.data.data')
+        console.log(res.data.data)
+        that.setData({
+          items: res.data.data
+        })
+      }
+    })
   },
 
   globalData: {
