@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class='container'>
-<view wx:if="{{title}}"> 
+<view wx:if="{{countForView > 0}}"> 
  <text class= 'question'>{{num}}. {{title}}</text>
   <view class='answer' >
     <view wx:if="{{'A' == chosen}}"> 
@@ -45,7 +45,9 @@
   </view>
   </view>
   <view wx:else> 
-  <button bindtap="goBack" class="datanull" 
-      type="button">空空如也～～</button>
+      <view wx:if="{{countForView == 0}}"> 
+        <button bindtap="goBack" class="datanull" 
+            type="button">空空如也～～</button> 
+      </view>
   </view>
 </view>

@@ -77,12 +77,18 @@ Page({
           if (index > count || index == count) {
             index = 0;
           }
+          if (items.length ==0) {
+            that.setData({
+              countForView: 0
+            })
+          }
           var options = items[index].options;
           var obj = JSON.parse(options);
           result = JSON.parse(items[index].result)[0];
           score = items[index].score;
           questionId = items[index].id;
           that.setData({
+            countForView: res.data.count,
             title: items[index].title,
             A: obj.A,
             B: obj.B,
@@ -100,13 +106,13 @@ Page({
         index = 0;
       }
       console.log('else index');
-      console.log(index);
       var options = items[index].options;
       var obj = JSON.parse(options);
       result = JSON.parse(items[index].result)[0];
       score = items[index].score;
       questionId = items[index].id;
       that.setData({
+        countForView: 1,
         title: items[index].title,
         A: obj.A,
         B: obj.B,
